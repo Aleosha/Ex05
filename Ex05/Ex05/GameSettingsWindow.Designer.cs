@@ -36,9 +36,11 @@
             this.player2TextBox = new System.Windows.Forms.TextBox();
             this.boardSizeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.rowsNumericUpDownBox = new System.Windows.Forms.NumericUpDown();
+            this.colsNumericUpDownBox = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.rowsNumericUpDownBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colsNumericUpDownBox)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -114,13 +116,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Rows:";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(117, 173);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(29, 20);
-            this.textBox1.TabIndex = 8;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -130,21 +125,58 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Cols:";
             // 
-            // textBox2
+            // rowsNumericUpDownBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(188, 172);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(29, 20);
-            this.textBox2.TabIndex = 10;
+            this.rowsNumericUpDownBox.Location = new System.Drawing.Point(117, 177);
+            this.rowsNumericUpDownBox.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.rowsNumericUpDownBox.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.rowsNumericUpDownBox.Name = "rowsNumericUpDownBox";
+            this.rowsNumericUpDownBox.Size = new System.Drawing.Size(29, 20);
+            this.rowsNumericUpDownBox.TabIndex = 10;
+            this.rowsNumericUpDownBox.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
-            // Form1
+            // colsNumericUpDownBox
+            // 
+            this.colsNumericUpDownBox.Location = new System.Drawing.Point(188, 177);
+            this.colsNumericUpDownBox.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.colsNumericUpDownBox.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.colsNumericUpDownBox.Name = "colsNumericUpDownBox";
+            this.colsNumericUpDownBox.Size = new System.Drawing.Size(29, 20);
+            this.colsNumericUpDownBox.TabIndex = 11;
+            this.colsNumericUpDownBox.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // GameSettingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(244, 261);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.colsNumericUpDownBox);
+            this.Controls.Add(this.rowsNumericUpDownBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.boardSizeLabel);
             this.Controls.Add(this.player2TextBox);
@@ -153,8 +185,10 @@
             this.Controls.Add(this.player1Label);
             this.Controls.Add(this.playersLabel);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "GameSettingsWindow";
             this.Text = "Game Settings";
+            ((System.ComponentModel.ISupportInitialize)(this.rowsNumericUpDownBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colsNumericUpDownBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,9 +204,9 @@
         private System.Windows.Forms.TextBox player2TextBox;
         private System.Windows.Forms.Label boardSizeLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.NumericUpDown rowsNumericUpDownBox;
+        private System.Windows.Forms.NumericUpDown colsNumericUpDownBox;
     }
 }
 
