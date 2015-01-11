@@ -1,6 +1,6 @@
 ﻿namespace Ex05
 {
-    partial class GameSettingsWindow
+    partial class GameSettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
             this.playersLabel = new System.Windows.Forms.Label();
             this.player1Label = new System.Windows.Forms.Label();
             this.player1TextBox = new System.Windows.Forms.TextBox();
@@ -43,14 +43,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.colsNumericUpDownBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // startButton
             // 
-            this.button1.Location = new System.Drawing.Point(25, 213);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start!";
-            this.button1.UseVisualStyleBackColor = true;
+            this.startButton.Location = new System.Drawing.Point(25, 213);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(192, 23);
+            this.startButton.TabIndex = 0;
+            this.startButton.Text = "Start!";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // playersLabel
             // 
@@ -87,7 +88,7 @@
             this.player2CheckBox.TabIndex = 4;
             this.player2CheckBox.Text = "Player 2:";
             this.player2CheckBox.UseVisualStyleBackColor = true;
-            this.player2CheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.player2CheckBox.CheckedChanged += new System.EventHandler(this.player2CheckBox_CheckedChanged);
             // 
             // player2TextBox
             // 
@@ -169,7 +170,7 @@
             0,
             0});
             // 
-            // GameSettingsWindow
+            // GameSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -184,8 +185,8 @@
             this.Controls.Add(this.player1TextBox);
             this.Controls.Add(this.player1Label);
             this.Controls.Add(this.playersLabel);
-            this.Controls.Add(this.button1);
-            this.Name = "GameSettingsWindow";
+            this.Controls.Add(this.startButton);
+            this.Name = "GameSettingsForm";
             this.Text = "Game Settings";
             ((System.ComponentModel.ISupportInitialize)(this.rowsNumericUpDownBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colsNumericUpDownBox)).EndInit();
@@ -196,7 +197,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label playersLabel;
         private System.Windows.Forms.Label player1Label;
         private System.Windows.Forms.TextBox player1TextBox;

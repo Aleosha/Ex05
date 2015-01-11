@@ -16,7 +16,7 @@ namespace Ex05
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameSettingsWindow());
+            Application.Run(new GameSettingsForm());
         }
     }
 }

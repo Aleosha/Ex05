@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ex05
 {
-    public partial class GameSettingsWindow : Form
+    public partial class GameSettingsForm : Form
     {
-        public GameSettingsWindow()
+        public GameSettingsForm()
         {
             InitializeComponent();
         }
@@ -22,9 +22,16 @@ namespace Ex05
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void player2CheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            Form form = new GameForm(5);
+            form.Show();
+            this.Hide();
         }
     }
 }
