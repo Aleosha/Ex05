@@ -28,6 +28,7 @@ namespace Ex05
             this.Size = new Size(k_CellSize * i_BoardSize + 50, k_CellSize * i_BoardSize + 75);
             this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize + 50, k_CellSize * i_BoardSize + 50);
 
+            int count = 0;
             for (int i = 0; i < m_BoardSize; i++)
             {
                 for (int j = 0; j < m_BoardSize; j++)
@@ -37,10 +38,20 @@ namespace Ex05
                         btn.Size = new Size(k_CellSize, k_CellSize);
                     }
                     m_GamePanel.Controls.Add(btn);
-                    //btn.Click += Buttons_Click;   
+                    btn.Click += new EventHandler(cellClickEventHandler);
+
+                    btn.Tag = count++;
                 }                                            
             }
             this.Controls.Add(m_GamePanel);            
         }
+
+        private void cellClickEventHandler(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Console.WriteLine(String.Format("Button {0} was clicked", clickedButton.Tag));
+            clickedButton.Text = "X";
+            clickedButton.Enabled = false;
+        }       
     }
 }

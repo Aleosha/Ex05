@@ -32,6 +32,15 @@ namespace Ex05
             Form form = new GameForm(5);
             form.Show();
             this.Hide();
+            form.FormClosed += new FormClosedEventHandler(onGameFormClosed);
         }
+
+        private void onGameFormClosed(object sender, EventArgs e)
+        {
+            //this.Show();
+            this.Close();
+        }
+
+    
     }
 }
