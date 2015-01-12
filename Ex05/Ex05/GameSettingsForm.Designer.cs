@@ -147,6 +147,7 @@
             0,
             0,
             0});
+            this.rowsNumericUpDownBox.ValueChanged += new System.EventHandler(this.rowsNumericUpDownBox_ValueChanged);
             // 
             // colsNumericUpDownBox
             // 
@@ -169,6 +170,7 @@
             0,
             0,
             0});
+            this.colsNumericUpDownBox.ValueChanged += new System.EventHandler(this.colsNumericUpDownBox_ValueChanged);
             // 
             // GameSettingsForm
             // 

@@ -41,7 +41,7 @@ namespace Ex05
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            Form form = new GameForm(5);
+            Form form = new GameForm((int) rowsNumericUpDownBox.Value);
             form.Show();
             this.Hide();
             form.FormClosed += new FormClosedEventHandler(onGameFormClosed);
@@ -53,6 +53,14 @@ namespace Ex05
             this.Close();
         }
 
-    
+        private void rowsNumericUpDownBox_ValueChanged(object sender, EventArgs e)
+        {
+            colsNumericUpDownBox.Value = ((NumericUpDown)sender).Value;
+        }
+
+        private void colsNumericUpDownBox_ValueChanged(object sender, EventArgs e)
+        {
+            rowsNumericUpDownBox.Value = ((NumericUpDown)sender).Value;
+        }    
     }
 }
