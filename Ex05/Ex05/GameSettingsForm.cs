@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Ex05
 {
     public partial class GameSettingsForm : Form
-    {
+    {       
         public GameSettingsForm()
         {
             InitializeComponent();
@@ -24,7 +24,19 @@ namespace Ex05
 
         private void player2CheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            CheckBox player2HumanCheckBox = (CheckBox)sender;
 
+            if (player2HumanCheckBox.Enabled) 
+            {
+                player2TextBox.Text = "";
+                player2TextBox.Focus();
+                player2TextBox.Enabled = true;
+            }
+            else
+            {
+                player2TextBox.Text = "Computer";
+                player2TextBox.Enabled = false;
+            }
         }
 
         private void startButton_Click(object sender, EventArgs e)
