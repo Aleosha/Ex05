@@ -35,11 +35,23 @@ namespace Ex05
             player2ScoreLabel.Text = m_Player2Name + " : 0";
             player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
             initWindow();
-            this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize, k_CellSize * i_BoardSize);
+            addGamePanel();    
             addCells();
 
             m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
 
+            bindEvents();
+        }
+
+        private void addGamePanel()
+        {
+            this.m_GamePanel.Size = new Size(k_CellSize * m_BoardSize, k_CellSize * m_BoardSize);
+            this.m_GamePanel.Left = (this.Size.Width - this.m_GamePanel.Width) / 2;
+            this.Controls.Add(m_GamePanel); 
+        }
+
+        private void bindEvents()
+        {
             m_GameLogic.ComputerPlayerTurn += onComputerPlayerTurn;
             m_GameLogic.CellChange += onCellChange;
             m_GameLogic.PlayerAlternation += onPlayerAlternation;
@@ -93,19 +105,18 @@ namespace Ex05
             {
                 for (int j = 0; j < m_BoardSize; j++)
                 {
-                    Button btn = new Button();
-                    {
-                        btn.Size = new Size(k_CellSize, k_CellSize);
-                    }
-                    m_GamePanel.Controls.Add(btn);
-                    btn.Click += new EventHandler(cellClickEventHandler);
-                    btn.Margin = new Padding(0);
+                    Button currentCellButton = new Button();
+                    
+                    currentCellButton.Size = new Size(k_CellSize, k_CellSize);
+                    currentCellButton.Click += new EventHandler(cellClickEventHandler);
+                    currentCellButton.Margin = new Padding(0);
+                    currentCellButton.Tag = count++;
+                    currentCellButton.TabStop = false;
 
-                    m_Cells.Add(btn);
-                    btn.Tag = count++;
+                    m_Cells.Add(currentCellButton);
+                    m_GamePanel.Controls.Add(currentCellButton);
                 }
-            }
-            this.Controls.Add(m_GamePanel);            
+            }       
         }
 
         private void cellClickEventHandler(object sender, EventArgs e)

@@ -63,7 +63,6 @@ namespace Ex05
 
         private void onGameFormClosed(object sender, EventArgs e)
         {
-            //this.Show();
             this.Close();
         }
 
