@@ -16,6 +16,7 @@ namespace Ex05
 
         private Ex2.GameLogic m_GameLogic;
         const int k_CellSize = 50;
+        List<Button> cells = new List<Button>();
 
         public GameForm()
         {
@@ -46,7 +47,10 @@ namespace Ex05
 
         private void onCellChange(object sender, Ex2.CellChangeArgs args)
         {
-
+            int index = args.Row*m_BoardSize+args.Cols;
+            Button clickedButton = cells[index];
+            clickedButton.Enabled = false;
+            clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
         }
 
         private void initWindow()
@@ -73,6 +77,7 @@ namespace Ex05
                     m_GamePanel.Controls.Add(btn);
                     btn.Click += new EventHandler(cellClickEventHandler);
 
+                    cells.Add(btn);
                     btn.Tag = count++;
                 }
             }
@@ -82,15 +87,23 @@ namespace Ex05
         private void cellClickEventHandler(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Console.WriteLine(String.Format("Button {0} was clicked", clickedButton.Tag));
 
             setCell((int)clickedButton.Tag);
 
-            clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
-            
-            clickedButton.Enabled = false;
+            if (!m_GameLogic.IsGameOver())
+            {
+                m_GameLogic.AlternatePlayers();
+            }
+            else
+            {
+                handleGameOver();
+            }
+        }
 
-            m_GameLogic.AlternatePlayers();
+        private void handleGameOver()
+        {
+            string gameOverMessage = "Game over";
+            MessageBox.Show(gameOverMessage);
         }
 
         private void setCell(int index)
