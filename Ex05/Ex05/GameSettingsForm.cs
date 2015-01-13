@@ -45,6 +45,11 @@ namespace Ex05
                 MessageBox.Show("Player 1 name must not be empty");
                 player1TextBox.Focus();
             }
+            else if (player2CheckBox.Checked && player2TextBox.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Player 2 name must not be empty");
+                player2TextBox.Focus();
+            }
             else
             {
                 int boardSize = (int)rowsNumericUpDownBox.Value;
