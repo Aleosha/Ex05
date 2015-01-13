@@ -102,7 +102,7 @@
             // boardSizeLabel
             // 
             this.boardSizeLabel.AutoSize = true;
-            this.boardSizeLabel.Location = new System.Drawing.Point(28, 152);
+            this.boardSizeLabel.Location = new System.Drawing.Point(25, 153);
             this.boardSizeLabel.Name = "boardSizeLabel";
             this.boardSizeLabel.Size = new System.Drawing.Size(59, 13);
             this.boardSizeLabel.TabIndex = 6;
@@ -135,7 +135,7 @@
             0,
             0});
             this.rowsNumericUpDownBox.Minimum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -143,7 +143,7 @@
             this.rowsNumericUpDownBox.Size = new System.Drawing.Size(29, 20);
             this.rowsNumericUpDownBox.TabIndex = 10;
             this.rowsNumericUpDownBox.Value = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -158,7 +158,7 @@
             0,
             0});
             this.colsNumericUpDownBox.Minimum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -166,7 +166,7 @@
             this.colsNumericUpDownBox.Size = new System.Drawing.Size(29, 20);
             this.colsNumericUpDownBox.TabIndex = 11;
             this.colsNumericUpDownBox.Value = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});

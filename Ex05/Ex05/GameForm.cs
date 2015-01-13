@@ -102,8 +102,27 @@ namespace Ex05
 
         private void handleGameOver()
         {
-            string gameOverMessage = "Game over";
-            MessageBox.Show(gameOverMessage);
+            string gameOverMessage = m_GameLogic.GameTerminationStatus.ToString();
+
+            if (eGameTerminationStatus.WON.Equals(m_GameLogic.GameTerminationStatus))
+            {
+                gameOverMessage = m_GameLogic.CurrPlayer.ToString() + " won!";
+            }
+            else if (eGameTerminationStatus.TIE.Equals(m_GameLogic.GameTerminationStatus))
+            {
+                gameOverMessage = "It's a tie";
+            }
+            DialogResult result = MessageBox.Show(gameOverMessage, "Game over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+            {
+                this.Close();
+            }
+            // Start again
+            else 
+            {
+                m_GameLogic.MakeNewRound();
+            }
         }
 
         private void setCell(int index)
