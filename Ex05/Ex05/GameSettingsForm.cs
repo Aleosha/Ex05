@@ -40,16 +40,24 @@ namespace Ex05
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            int boardSize = (int)rowsNumericUpDownBox.Value;
-            ePlayerType secondPlayerType = ePlayerType.COMPUTER;
-            if (player2CheckBox.Checked)
+            if (player1TextBox.Text.Trim().Length == 0)
             {
-                secondPlayerType = ePlayerType.HUMAN;
+                MessageBox.Show("Player 1 name must not be empty");
+                player1TextBox.Focus();
             }
-            Form form = new GameForm(boardSize, secondPlayerType);
-            form.Show();
-            this.Hide();
-            form.FormClosed += new FormClosedEventHandler(onGameFormClosed);
+            else
+            {
+                int boardSize = (int)rowsNumericUpDownBox.Value;
+                ePlayerType secondPlayerType = ePlayerType.COMPUTER;
+                if (player2CheckBox.Checked)
+                {
+                    secondPlayerType = ePlayerType.HUMAN;
+                }
+                Form form = new GameForm(boardSize, secondPlayerType);
+                form.Show();
+                this.Hide();
+                form.FormClosed += new FormClosedEventHandler(onGameFormClosed);
+            }           
         }
 
         private void onGameFormClosed(object sender, EventArgs e)
