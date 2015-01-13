@@ -37,7 +37,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(284, 288);
             this.Name = "GameForm";
-            this.Text = "GameForm";
+            this.Text = "Tic Tac Toe";
             this.ResumeLayout(false);
 
         }

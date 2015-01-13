@@ -25,9 +25,10 @@ namespace Ex05
 
         public GameForm(int i_BoardSize, ePlayerType i_SecondPlayerType)
         {
+            InitializeComponent();
             this.m_BoardSize = i_BoardSize;
             initWindow();
-            this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize + k_CellSize, k_CellSize * i_BoardSize + k_CellSize);
+            this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize, k_CellSize * i_BoardSize);
             
             addCells();
 
@@ -49,13 +50,13 @@ namespace Ex05
         {
             int index = args.Row*m_BoardSize+args.Cols;
             Button clickedButton = cells[index];
-            clickedButton.Enabled = false;
+            clickedButton.Enabled = false;           
             clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
         }
 
         private void initWindow()
         {
-            int windowWidth = (int)(k_CellSize * m_BoardSize + k_CellSize * 1.5);
+            int windowWidth = (int)(k_CellSize * m_BoardSize + k_CellSize);
             int windowHeight = k_CellSize * m_BoardSize + k_CellSize;
             this.Size = new Size(windowHeight, windowWidth);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -76,6 +77,7 @@ namespace Ex05
                     }
                     m_GamePanel.Controls.Add(btn);
                     btn.Click += new EventHandler(cellClickEventHandler);
+                    btn.Margin = new Padding(0);
 
                     cells.Add(btn);
                     btn.Tag = count++;
@@ -121,6 +123,11 @@ namespace Ex05
             // Start again
             else 
             {
+                foreach(Button btn in cells)
+                {
+                    btn.Enabled = true;
+                    btn.Text = "";
+                }
                 m_GameLogic.MakeNewRound();
             }
         }
