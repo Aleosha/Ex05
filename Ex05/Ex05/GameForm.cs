@@ -31,6 +31,17 @@ namespace Ex05
             addCells();
 
             m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
+
+            m_GameLogic.ComputerPlayerTurn += onComputerPlayerTurn;
+            m_GameLogic.OnCellChange += onCellChange;
+        }
+
+        private void onComputerPlayerTurn(object sender, EventArgs e)
+        {
+            MoveOption bestOption = ComputerPlayerLogic.GetBestOption(m_GameLogic);
+
+            bool wasCellEmpty = m_GameLogic.SetCell(bestOption.Row, bestOption.Column, m_GameLogic.CurrPlayer.CellValue);
+            m_GameLogic.AlternatePlayers();
         }
 
         private void initWindow()
@@ -67,18 +78,22 @@ namespace Ex05
         {
             Button clickedButton = (Button)sender;
             Console.WriteLine(String.Format("Button {0} was clicked", clickedButton.Tag));
-            if (eCellValue.PLAYER_1.Equals(m_GameLogic.CurrPlayer.CellValue))
-            {
-                clickedButton.Text = Player.k_Player1Sign.ToString();
-            }
-            else
-            {
-                clickedButton.Text = Player.k_Player2Sign.ToString();
-            }
+
+            setCell((int)clickedButton.Tag);
+
+            clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
             
             clickedButton.Enabled = false;
 
             m_GameLogic.AlternatePlayers();
+        }
+
+        private void setCell(int index)
+        {
+            int col = index % m_BoardSize;
+            int row = index / m_BoardSize;
+
+            m_GameLogic.SetCell(row + 1, col + 1, m_GameLogic.CurrPlayer.CellValue);
         }       
     }
 }

@@ -11,6 +11,9 @@ namespace Ex2
         private Player m_Player1, m_Player2, m_CurrPlayer;
         private eGameTerminationStatus m_GameTerminationStatus;
 
+        public event EventHandler ComputerPlayerTurn;
+        public event EventHandler<CellChangeArgs> CellChange;
+
         public eGameTerminationStatus GameTerminationStatus
         {
             get { return m_GameTerminationStatus; }
@@ -59,8 +62,11 @@ namespace Ex2
                 m_Board[i_Row - 1, i_Column - 1] = i_CellValue;
             }
 
+            onCellChange(new CellChangeArgs(i_Row - 1, i_Column - 1));
+
             return setSuccessful;
         }
+
 
         public void MakeNewRound()
         {
@@ -236,6 +242,29 @@ namespace Ex2
         public void AlternatePlayers()
         {
             m_CurrPlayer = (m_CurrPlayer.CellValue == m_Player1.CellValue) ? m_Player2 : m_Player1;
+
+            if (ePlayerType.COMPUTER.Equals(m_CurrPlayer.PlayerType))
+            {
+                onComputerPlayerTurn();
+            }
+        }
+
+        private void onComputerPlayerTurn()
+        {
+            EventHandler handler = ComputerPlayerTurn;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
+        }
+
+        private void onCellChange(CellChangeArgs args)
+        {
+            EventHandler<CellChangeArgs> handler = CellChange;
+            if (handler != null)
+            {
+                handler(this, args);
+            }
         }
     }
 }

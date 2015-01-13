@@ -42,7 +42,7 @@ namespace Ex05
         {
             int boardSize = (int)rowsNumericUpDownBox.Value;
             ePlayerType secondPlayerType = ePlayerType.COMPUTER;
-            if (player2CheckBox.Enabled)
+            if (player2CheckBox.Checked)
             {
                 secondPlayerType = ePlayerType.HUMAN;
             }
