@@ -16,10 +16,6 @@ namespace Ex05
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void player2CheckBox_CheckedChanged(object sender, EventArgs e)
         {

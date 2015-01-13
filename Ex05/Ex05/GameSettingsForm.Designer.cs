@@ -61,7 +61,7 @@
             this.playersLabel.Size = new System.Drawing.Size(44, 13);
             this.playersLabel.TabIndex = 1;
             this.playersLabel.Text = "Players:";
-            this.playersLabel.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // player1Label
             // 
