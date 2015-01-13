@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex2
 {
-    class CellChangeArgs : EventArgs
+    public class CellChangeArgs : EventArgs
     {
         private int m_Row;
         private int m_Cols;

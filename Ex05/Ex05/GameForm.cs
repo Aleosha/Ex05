@@ -33,7 +33,7 @@ namespace Ex05
             m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
 
             m_GameLogic.ComputerPlayerTurn += onComputerPlayerTurn;
-            m_GameLogic.OnCellChange += onCellChange;
+            m_GameLogic.CellChange += onCellChange;
         }
 
         private void onComputerPlayerTurn(object sender, EventArgs e)
@@ -42,6 +42,11 @@ namespace Ex05
 
             bool wasCellEmpty = m_GameLogic.SetCell(bestOption.Row, bestOption.Column, m_GameLogic.CurrPlayer.CellValue);
             m_GameLogic.AlternatePlayers();
+        }
+
+        private void onCellChange(object sender, Ex2.CellChangeArgs args)
+        {
+
         }
 
         private void initWindow()
