@@ -13,7 +13,6 @@ namespace Ex2
 
         public event EventHandler ComputerPlayerTurn;
         public event EventHandler<CellChangeArgs> CellChange;
-        public event EventHandler ScoreChange;
 
         public eGameTerminationStatus GameTerminationStatus
         {

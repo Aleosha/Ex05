@@ -31,6 +31,8 @@ namespace Ex05
             this.m_BoardSize = i_BoardSize;
             m_Player1Name = i_Player1Name;
             m_Player2Name = i_Player2Name;
+            player1ScoreLabel.Text = m_Player1Name + " : 0";
+            player2ScoreLabel.Text = m_Player2Name + " : 0";
             initWindow();
             this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize, k_CellSize * i_BoardSize);
             
