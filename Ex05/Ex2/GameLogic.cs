@@ -13,6 +13,7 @@ namespace Ex2
 
         public event EventHandler ComputerPlayerTurn;
         public event EventHandler<CellChangeArgs> CellChange;
+        public event EventHandler PlayerAlternation;
 
         public eGameTerminationStatus GameTerminationStatus
         {
@@ -242,6 +243,8 @@ namespace Ex2
         {
             m_CurrPlayer = (m_CurrPlayer.CellValue == m_Player1.CellValue) ? m_Player2 : m_Player1;
 
+            onPlayerAlternation();
+
             if (ePlayerType.COMPUTER.Equals(m_CurrPlayer.PlayerType) && !IsGameOver())
             {
                 onComputerPlayerTurn();
@@ -263,6 +266,15 @@ namespace Ex2
             if (handler != null)
             {
                 handler(this, args);
+            }
+        }
+
+        private void onPlayerAlternation()
+        {
+            EventHandler handler = PlayerAlternation;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
             }
         }
     }

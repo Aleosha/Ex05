@@ -33,15 +33,16 @@ namespace Ex05
             m_Player2Name = i_Player2Name;
             player1ScoreLabel.Text = m_Player1Name + " : 0";
             player2ScoreLabel.Text = m_Player2Name + " : 0";
+            player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
             initWindow();
             this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize, k_CellSize * i_BoardSize);
-            
             addCells();
 
             m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
 
             m_GameLogic.ComputerPlayerTurn += onComputerPlayerTurn;
             m_GameLogic.CellChange += onCellChange;
+            m_GameLogic.PlayerAlternation += onPlayerAlternation;
         }
 
         private void onComputerPlayerTurn(object sender, EventArgs e)
@@ -58,6 +59,21 @@ namespace Ex05
             Button clickedButton = m_Cells[index];
             clickedButton.Enabled = false;           
             clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
+        }
+
+        private void onPlayerAlternation(object sender, EventArgs e)
+        {
+            if (m_GameLogic.CurrPlayer == m_GameLogic.Player1)
+            {
+                player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
+                player2ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Regular);
+            }
+            else
+            {
+                player2ScoreLabel.Font = new Font(player2ScoreLabel.Font, FontStyle.Bold);
+                player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Regular);
+            }
+            updateScore();
         }
 
         private void initWindow()
@@ -135,14 +151,21 @@ Would you like to play another round?");
             // Start again
             else 
             {
-                foreach(Button btn in m_Cells)
-                {
-                    btn.Enabled = true;
-                    btn.Text = string.Empty;
-                }
+                resetBoard();
                 updateScore();
                 m_GameLogic.MakeNewRound();
             }
+        }
+
+        private void resetBoard()
+        {
+            foreach (Button btn in m_Cells)
+            {
+                btn.Enabled = true;
+                btn.Text = string.Empty;
+            }
+            player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
+            player2ScoreLabel.Font = new Font(player2ScoreLabel.Font, FontStyle.Regular);
         }
 
         private void updateScore()
