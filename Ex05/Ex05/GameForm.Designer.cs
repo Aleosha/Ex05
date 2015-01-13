@@ -28,7 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.player1ScoreLabel = new System.Windows.Forms.Label();
+            this.player2ScoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // player1ScoreLabel
+            // 
+            this.player1ScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.player1ScoreLabel.AutoSize = true;
+            this.player1ScoreLabel.Location = new System.Drawing.Point(70, 266);
+            this.player1ScoreLabel.Name = "player1ScoreLabel";
+            this.player1ScoreLabel.Size = new System.Drawing.Size(57, 13);
+            this.player1ScoreLabel.TabIndex = 0;
+            this.player1ScoreLabel.Text = "Player 1: 0";
+            // 
+            // player2ScoreLabel
+            // 
+            this.player2ScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.player2ScoreLabel.AutoSize = true;
+            this.player2ScoreLabel.Location = new System.Drawing.Point(133, 266);
+            this.player2ScoreLabel.Name = "player2ScoreLabel";
+            this.player2ScoreLabel.Size = new System.Drawing.Size(57, 13);
+            this.player2ScoreLabel.TabIndex = 1;
+            this.player2ScoreLabel.Text = "Player 2: 0";
             // 
             // GameForm
             // 
@@ -36,13 +60,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(284, 288);
+            this.Controls.Add(this.player2ScoreLabel);
+            this.Controls.Add(this.player1ScoreLabel);
             this.Name = "GameForm";
             this.Text = "Tic Tac Toe";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label player1ScoreLabel;
+        private System.Windows.Forms.Label player2ScoreLabel;
 
     }
 }

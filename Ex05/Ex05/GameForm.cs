@@ -115,7 +115,7 @@ namespace Ex05
                 gameOverMessage = string.Format(
 @"The winner is {0}!.
 Would you like to play another round?", m_GameLogic.CurrPlayer.ToString() == "X" ? m_Player1Name : m_Player2Name);
-
+                m_GameLogic.CurrPlayer.increaseScore();
             }
             else if (eGameTerminationStatus.TIE.Equals(m_GameLogic.GameTerminationStatus))
             {
@@ -138,8 +138,15 @@ Would you like to play another round?");
                     btn.Enabled = true;
                     btn.Text = string.Empty;
                 }
+                updateScore();
                 m_GameLogic.MakeNewRound();
             }
+        }
+
+        private void updateScore()
+        {
+            player1ScoreLabel.Text = string.Format(@"{0} : {1}", m_Player1Name, m_GameLogic.Player1.Score);
+            player2ScoreLabel.Text = string.Format(@"{0} : {1}", m_Player2Name, m_GameLogic.Player2.Score);
         }
 
         private void setCell(int index)
@@ -148,6 +155,7 @@ Would you like to play another round?");
             int row = index / m_BoardSize;
 
             m_GameLogic.SetCell(row + 1, col + 1, m_GameLogic.CurrPlayer.CellValue);
-        }       
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace Ex2
 
         public event EventHandler ComputerPlayerTurn;
         public event EventHandler<CellChangeArgs> CellChange;
+        public event EventHandler ScoreChange;
 
         public eGameTerminationStatus GameTerminationStatus
         {
@@ -101,7 +102,6 @@ namespace Ex2
             if (wonGame)
             {
                 m_GameTerminationStatus = eGameTerminationStatus.WON;
-                m_CurrPlayer.increaseScore();
             }
 
             return wonGame;
