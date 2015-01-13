@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Ex2;
 
 namespace Ex05
 {
@@ -39,7 +40,13 @@ namespace Ex05
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            Form form = new GameForm((int) rowsNumericUpDownBox.Value);
+            int boardSize = (int)rowsNumericUpDownBox.Value;
+            ePlayerType secondPlayerType = ePlayerType.COMPUTER;
+            if (player2CheckBox.Enabled)
+            {
+                secondPlayerType = ePlayerType.HUMAN;
+            }
+            Form form = new GameForm(boardSize, secondPlayerType);
             form.Show();
             this.Hide();
             form.FormClosed += new FormClosedEventHandler(onGameFormClosed);

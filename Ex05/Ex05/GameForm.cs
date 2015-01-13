@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Ex2;
 
 namespace Ex05
 {
@@ -13,6 +14,7 @@ namespace Ex05
         private int m_BoardSize;
         private FlowLayoutPanel m_GamePanel = new FlowLayoutPanel();
 
+        private Ex2.GameLogic m_GameLogic;
         const int k_CellSize = 50;
 
         public GameForm()
@@ -20,12 +22,18 @@ namespace Ex05
             InitializeComponent();
         }
 
-        public GameForm(int i_BoardSize)
+        public GameForm(int i_BoardSize, ePlayerType i_SecondPlayerType)
         {
             this.m_BoardSize = i_BoardSize;
             this.Size = new Size(k_CellSize * i_BoardSize + 50, k_CellSize * i_BoardSize + 75);
             this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize + 50, k_CellSize * i_BoardSize + 50);
 
+            m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
+            addCells();
+        }
+
+        private void addCells()
+        {
             int count = 0;
             for (int i = 0; i < m_BoardSize; i++)
             {
@@ -39,7 +47,7 @@ namespace Ex05
                     btn.Click += new EventHandler(cellClickEventHandler);
 
                     btn.Tag = count++;
-                }                                            
+                }
             }
             this.Controls.Add(m_GamePanel);            
         }

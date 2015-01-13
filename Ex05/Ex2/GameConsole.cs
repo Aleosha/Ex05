@@ -267,8 +267,7 @@ namespace Ex2
         }
 
         private void clearScreenAndPrintBoard()
-        {
-            Ex02.ConsoleUtils.Screen.Clear();
+        {            
             write(getHorizontalIndexes());
 
             for (int i = 0; i < m_GameLogic.BoardDimension; i++)
