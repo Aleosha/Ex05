@@ -25,15 +25,15 @@ namespace Ex05
         {
             CheckBox player2HumanCheckBox = (CheckBox)sender;
 
-            if (player2HumanCheckBox.Enabled) 
+            if (player2HumanCheckBox.Checked) 
             {
-                player2TextBox.Text = "";
+                player2TextBox.Text = string.Empty;
                 player2TextBox.Focus();
                 player2TextBox.Enabled = true;
             }
             else
             {
-                player2TextBox.Text = "Computer";
+                player2TextBox.Text = "[Computer]";
                 player2TextBox.Enabled = false;
             }
         }
@@ -53,11 +53,7 @@ namespace Ex05
             else
             {
                 int boardSize = (int)rowsNumericUpDownBox.Value;
-                ePlayerType secondPlayerType = ePlayerType.COMPUTER;
-                if (player2CheckBox.Checked)
-                {
-                    secondPlayerType = ePlayerType.HUMAN;
-                }
+                ePlayerType secondPlayerType = player2CheckBox.Checked ? ePlayerType.HUMAN : ePlayerType.COMPUTER;
                 Form form = new GameForm(boardSize, secondPlayerType);
                 form.Show();
                 this.Hide();

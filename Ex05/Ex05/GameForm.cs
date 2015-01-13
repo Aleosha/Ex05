@@ -16,7 +16,7 @@ namespace Ex05
 
         private Ex2.GameLogic m_GameLogic;
         const int k_CellSize = 50;
-        List<Button> cells = new List<Button>();
+        List<Button> m_Cells = new List<Button>();
 
         public GameForm()
         {
@@ -49,14 +49,14 @@ namespace Ex05
         private void onCellChange(object sender, Ex2.CellChangeArgs args)
         {
             int index = args.Row*m_BoardSize+args.Cols;
-            Button clickedButton = cells[index];
+            Button clickedButton = m_Cells[index];
             clickedButton.Enabled = false;           
             clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
         }
 
         private void initWindow()
         {
-            int windowWidth = (int)(k_CellSize * m_BoardSize + k_CellSize);
+            int windowWidth = k_CellSize * m_BoardSize + k_CellSize;
             int windowHeight = k_CellSize * m_BoardSize + k_CellSize;
             this.Size = new Size(windowHeight, windowWidth);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -79,7 +79,7 @@ namespace Ex05
                     btn.Click += new EventHandler(cellClickEventHandler);
                     btn.Margin = new Padding(0);
 
-                    cells.Add(btn);
+                    m_Cells.Add(btn);
                     btn.Tag = count++;
                 }
             }
@@ -96,7 +96,11 @@ namespace Ex05
             {
                 m_GameLogic.AlternatePlayers();
             }
-            else
+            //else
+            //{
+            //    handleGameOver();
+            //}
+            if (m_GameLogic.IsGameOver())
             {
                 handleGameOver();
             }
@@ -109,6 +113,8 @@ namespace Ex05
             if (eGameTerminationStatus.WON.Equals(m_GameLogic.GameTerminationStatus))
             {
                 gameOverMessage = m_GameLogic.CurrPlayer.ToString() + " won!";
+
+                //gameOverMessage = m_GameLogic.CurrPlayer.ToString() + " won!";
             }
             else if (eGameTerminationStatus.TIE.Equals(m_GameLogic.GameTerminationStatus))
             {
@@ -123,7 +129,7 @@ namespace Ex05
             // Start again
             else 
             {
-                foreach(Button btn in cells)
+                foreach(Button btn in m_Cells)
                 {
                     btn.Enabled = true;
                     btn.Text = "";
