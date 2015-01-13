@@ -27,9 +27,9 @@ namespace Ex05
 
             if (player2HumanCheckBox.Checked) 
             {
-                player2TextBox.Text = string.Empty;
-                player2TextBox.Focus();
+                player2TextBox.Text = string.Empty;                
                 player2TextBox.Enabled = true;
+                player2TextBox.Focus();
             }
             else
             {

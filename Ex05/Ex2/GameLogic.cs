@@ -243,7 +243,7 @@ namespace Ex2
         {
             m_CurrPlayer = (m_CurrPlayer.CellValue == m_Player1.CellValue) ? m_Player2 : m_Player1;
 
-            if (ePlayerType.COMPUTER.Equals(m_CurrPlayer.PlayerType))
+            if (ePlayerType.COMPUTER.Equals(m_CurrPlayer.PlayerType) && !IsGameOver())
             {
                 onComputerPlayerTurn();
             }

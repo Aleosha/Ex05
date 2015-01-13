@@ -92,15 +92,9 @@ namespace Ex05
 
             setCell((int)clickedButton.Tag);
 
-            if (!m_GameLogic.IsGameOver())
-            {
-                m_GameLogic.AlternatePlayers();
-            }
-            //else
-            //{
-            //    handleGameOver();
-            //}
-            if (m_GameLogic.IsGameOver())
+            m_GameLogic.AlternatePlayers();
+
+            if(m_GameLogic.IsGameOver())
             {
                 handleGameOver();
             }
@@ -132,7 +126,7 @@ namespace Ex05
                 foreach(Button btn in m_Cells)
                 {
                     btn.Enabled = true;
-                    btn.Text = "";
+                    btn.Text = string.Empty;
                 }
                 m_GameLogic.MakeNewRound();
             }
