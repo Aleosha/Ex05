@@ -45,8 +45,10 @@ namespace Ex05
 
         private void addGamePanel()
         {
-            this.m_GamePanel.Size = new Size(k_CellSize * m_BoardSize, k_CellSize * m_BoardSize);
-            this.m_GamePanel.Left = (this.Size.Width - this.m_GamePanel.Width) / 2;
+           
+            m_GamePanel.Size = new Size(k_CellSize * m_BoardSize, k_CellSize * m_BoardSize);
+            m_GamePanel.Left = ((this.Size.Width - this.m_GamePanel.Width) / 2) - m_BoardSize ;
+        
             this.Controls.Add(m_GamePanel); 
         }
 
@@ -91,11 +93,10 @@ namespace Ex05
         private void initWindow()
         {
             int windowWidth = k_CellSize * m_BoardSize + k_CellSize;
-            int windowHeight = k_CellSize * m_BoardSize + k_CellSize;
+            int windowHeight = k_CellSize * m_BoardSize + k_CellSize * 2;
             this.Size = new Size(windowHeight, windowWidth);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
         }
 
         private void addCells()
