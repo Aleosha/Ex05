@@ -17,16 +17,20 @@ namespace Ex05
         private Ex2.GameLogic m_GameLogic;
         const int k_CellSize = 50;
         List<Button> m_Cells = new List<Button>();
+        private string m_Player1Name;
+        private string m_Player2Name;
 
         public GameForm()
         {
             InitializeComponent();
         }
 
-        public GameForm(int i_BoardSize, ePlayerType i_SecondPlayerType)
+        public GameForm(int i_BoardSize, ePlayerType i_SecondPlayerType, string i_Player1Name, string i_Player2Name)
         {
             InitializeComponent();
             this.m_BoardSize = i_BoardSize;
+            m_Player1Name = i_Player1Name;
+            m_Player2Name = i_Player2Name;
             initWindow();
             this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize, k_CellSize * i_BoardSize);
             
@@ -102,19 +106,25 @@ namespace Ex05
 
         private void handleGameOver()
         {
-            string gameOverMessage = m_GameLogic.GameTerminationStatus.ToString();
+            string gameOverMessage = string.Empty;
+            string messageBoxTitle = string.Empty;
 
             if (eGameTerminationStatus.WON.Equals(m_GameLogic.GameTerminationStatus))
             {
-                gameOverMessage = m_GameLogic.CurrPlayer.ToString() + " won!";
+                messageBoxTitle = "A Win!";
+                gameOverMessage = string.Format(
+@"The winner is {0}!.
+Would you like to play another round?", m_GameLogic.CurrPlayer.ToString() == "X" ? m_Player1Name : m_Player2Name);
 
-                //gameOverMessage = m_GameLogic.CurrPlayer.ToString() + " won!";
             }
             else if (eGameTerminationStatus.TIE.Equals(m_GameLogic.GameTerminationStatus))
             {
-                gameOverMessage = "It's a tie";
+                messageBoxTitle = "A Tie!";
+                gameOverMessage = string.Format(
+@"Tie!
+Would you like to play another round?");
             }
-            DialogResult result = MessageBox.Show(gameOverMessage, "Game over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(gameOverMessage, messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.None);
 
             if (result == DialogResult.No)
             {

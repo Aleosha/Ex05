@@ -54,7 +54,7 @@ namespace Ex05
             {
                 int boardSize = (int)rowsNumericUpDownBox.Value;
                 ePlayerType secondPlayerType = player2CheckBox.Checked ? ePlayerType.HUMAN : ePlayerType.COMPUTER;
-                Form form = new GameForm(boardSize, secondPlayerType);
+                Form form = new GameForm(boardSize, secondPlayerType, player1TextBox.Text, player2TextBox.Text);
                 form.Show();
                 this.Hide();
                 form.FormClosed += new FormClosedEventHandler(onGameFormClosed);
