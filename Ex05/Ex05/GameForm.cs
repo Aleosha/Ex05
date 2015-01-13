@@ -25,11 +25,22 @@ namespace Ex05
         public GameForm(int i_BoardSize, ePlayerType i_SecondPlayerType)
         {
             this.m_BoardSize = i_BoardSize;
-            this.Size = new Size(k_CellSize * i_BoardSize + 50, k_CellSize * i_BoardSize + 75);
-            this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize + 50, k_CellSize * i_BoardSize + 50);
+            initWindow();
+            this.m_GamePanel.Size = new Size(k_CellSize * i_BoardSize + k_CellSize, k_CellSize * i_BoardSize + k_CellSize);
+            
+            addCells();
 
             m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
-            addCells();
+        }
+
+        private void initWindow()
+        {
+            int windowWidth = (int)(k_CellSize * m_BoardSize + k_CellSize * 1.5);
+            int windowHeight = k_CellSize * m_BoardSize + k_CellSize;
+            this.Size = new Size(windowHeight, windowWidth);
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
         private void addCells()
@@ -56,8 +67,18 @@ namespace Ex05
         {
             Button clickedButton = (Button)sender;
             Console.WriteLine(String.Format("Button {0} was clicked", clickedButton.Tag));
-            clickedButton.Text = "X";
+            if (eCellValue.PLAYER_1.Equals(m_GameLogic.CurrPlayer.CellValue))
+            {
+                clickedButton.Text = Player.k_Player1Sign.ToString();
+            }
+            else
+            {
+                clickedButton.Text = Player.k_Player2Sign.ToString();
+            }
+            
             clickedButton.Enabled = false;
+
+            m_GameLogic.AlternatePlayers();
         }       
     }
 }

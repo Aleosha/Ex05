@@ -233,7 +233,7 @@ namespace Ex2
             return m_Board[i_Row - 1, i_Column - 1];
         }
 
-        internal void AlternatePlayers()
+        public void AlternatePlayers()
         {
             m_CurrPlayer = (m_CurrPlayer.CellValue == m_Player1.CellValue) ? m_Player2 : m_Player1;
         }
