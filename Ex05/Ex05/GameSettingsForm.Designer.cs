@@ -97,7 +97,7 @@
             this.player2TextBox.Name = "player2TextBox";
             this.player2TextBox.Size = new System.Drawing.Size(100, 20);
             this.player2TextBox.TabIndex = 5;
-            this.player2TextBox.Text = "Computer";
+            this.player2TextBox.Text = "[Computer]";
             // 
             // boardSizeLabel
             // 
