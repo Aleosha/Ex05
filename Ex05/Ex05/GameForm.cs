@@ -34,6 +34,7 @@ namespace Ex05
             player1ScoreLabel.Text = m_Player1Name + " : 0";
             player2ScoreLabel.Text = m_Player2Name + " : 0";
             player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
+            this.player1ScoreLabel.Location = new Point(this.Width / 2 - this.player1ScoreLabel.Width -5, this.player1ScoreLabel.Location.Y);
             initWindow();
             addGamePanel();    
             addCells();
