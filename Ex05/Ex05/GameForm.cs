@@ -36,7 +36,7 @@ namespace Ex05
             player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
             this.player1ScoreLabel.Location = new Point(this.Width / 2 - this.player1ScoreLabel.Width -5, this.player1ScoreLabel.Location.Y);
             initWindow();
-            addGamePanel();    
+            addGamePanel();
             addCells();
 
             m_GameLogic = new GameLogic(i_BoardSize, i_SecondPlayerType);
@@ -94,8 +94,8 @@ namespace Ex05
         private void initWindow()
         {
             int windowWidth = k_CellSize * m_BoardSize + k_CellSize;
-            int windowHeight = k_CellSize * m_BoardSize + k_CellSize * 2;
-            this.Size = new Size(windowHeight, windowWidth);
+            int windowHeight = k_CellSize * m_BoardSize + (int) (1.5 * k_CellSize);
+            this.Size = new Size(windowWidth, windowHeight);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
         }
