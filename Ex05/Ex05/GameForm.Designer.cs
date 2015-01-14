@@ -34,10 +34,9 @@
             // 
             // player1ScoreLabel
             // 
-            this.player1ScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.player1ScoreLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.player1ScoreLabel.AutoSize = true;
-            this.player1ScoreLabel.Location = new System.Drawing.Point(70, 266);
+            this.player1ScoreLabel.Location = new System.Drawing.Point(82, 266);
             this.player1ScoreLabel.Name = "player1ScoreLabel";
             this.player1ScoreLabel.Size = new System.Drawing.Size(57, 13);
             this.player1ScoreLabel.TabIndex = 0;
@@ -45,10 +44,9 @@
             // 
             // player2ScoreLabel
             // 
-            this.player2ScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.player2ScoreLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.player2ScoreLabel.AutoSize = true;
-            this.player2ScoreLabel.Location = new System.Drawing.Point(133, 266);
+            this.player2ScoreLabel.Location = new System.Drawing.Point(145, 266);
             this.player2ScoreLabel.Name = "player2ScoreLabel";
             this.player2ScoreLabel.Size = new System.Drawing.Size(57, 13);
             this.player2ScoreLabel.TabIndex = 1;
