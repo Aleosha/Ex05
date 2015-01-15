@@ -15,21 +15,16 @@ namespace Ex2
             this.m_Cols = i_Cols;
         }
 
-
         public int Row
         {
             get { return m_Row; }
             set { m_Row = value; }
         }
 
-
-
         public int Cols
         {
             get { return m_Cols; }
             set { m_Cols = value; }
         }
-        
-        
     }
 }

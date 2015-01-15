@@ -11,12 +11,11 @@ namespace Ex05
 {
     public partial class GameForm : Form
     {
+        private const int k_CellSize = 50;
         private int m_BoardSize;
         private FlowLayoutPanel m_GamePanel = new FlowLayoutPanel();
-
         private Ex2.GameLogic m_GameLogic;
-        const int k_CellSize = 50;
-        List<Button> m_Cells = new List<Button>();
+        private List<Button> m_Cells = new List<Button>();
         private string m_Player1Name;
         private string m_Player2Name;
 
@@ -34,7 +33,7 @@ namespace Ex05
             player1ScoreLabel.Text = m_Player1Name + " : 0";
             player2ScoreLabel.Text = m_Player2Name + " : 0";
             player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
-            this.player1ScoreLabel.Location = new Point(this.Width / 2 - this.player1ScoreLabel.Width -5, this.player1ScoreLabel.Location.Y);
+            this.player1ScoreLabel.Location = new Point((this.Width / 2) - this.player1ScoreLabel.Width - 5, this.player1ScoreLabel.Location.Y);
             initWindow();
             addGamePanel();
             addCells();
@@ -45,10 +44,9 @@ namespace Ex05
         }
 
         private void addGamePanel()
-        {
-           
+        {  
             m_GamePanel.Size = new Size(k_CellSize * m_BoardSize, k_CellSize * m_BoardSize);
-            m_GamePanel.Left = ((this.Size.Width - this.m_GamePanel.Width) / 2) - m_BoardSize ;
+            m_GamePanel.Left = ((this.Size.Width - this.m_GamePanel.Width) / 2) - m_BoardSize;
         
             this.Controls.Add(m_GamePanel); 
         }
@@ -70,7 +68,7 @@ namespace Ex05
 
         private void onCellChange(object sender, Ex2.CellChangeArgs args)
         {
-            int index = args.Row*m_BoardSize+args.Cols;
+            int index = (args.Row * m_BoardSize) + args.Cols;
             Button clickedButton = m_Cells[index];
             clickedButton.Enabled = false;           
             clickedButton.Text = m_GameLogic.CurrPlayer.ToString();
@@ -88,13 +86,14 @@ namespace Ex05
                 player2ScoreLabel.Font = new Font(player2ScoreLabel.Font, FontStyle.Bold);
                 player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Regular);
             }
+
             updateScore();
         }
 
         private void initWindow()
         {
-            int windowWidth = k_CellSize * m_BoardSize + k_CellSize;
-            int windowHeight = k_CellSize * m_BoardSize + (int) (1.5 * k_CellSize);
+            int windowWidth = (k_CellSize * m_BoardSize) + k_CellSize;
+            int windowHeight = (k_CellSize * m_BoardSize) + (int)(1.5 * k_CellSize);
             this.Size = new Size(windowWidth, windowHeight);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -145,7 +144,8 @@ namespace Ex05
                 messageBoxTitle = "A Win!";
                 gameOverMessage = string.Format(
 @"The winner is {0}!.
-Would you like to play another round?", m_GameLogic.CurrPlayer.ToString() == "X" ? m_Player1Name : m_Player2Name);
+Would you like to play another round?",
+                                      m_GameLogic.CurrPlayer.ToString() == "X" ? m_Player1Name : m_Player2Name);
                 m_GameLogic.CurrPlayer.increaseScore();
             }
             else if (eGameTerminationStatus.TIE.Equals(m_GameLogic.GameTerminationStatus))
@@ -155,15 +155,16 @@ Would you like to play another round?", m_GameLogic.CurrPlayer.ToString() == "X"
 @"Tie!
 Would you like to play another round?");
             }
+
             DialogResult result = MessageBox.Show(gameOverMessage, messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.None);
 
             if (result == DialogResult.No)
             {
                 this.Close();
             }
-            // Start again
             else 
             {
+                // Start again
                 resetBoard();
                 updateScore();
                 m_GameLogic.MakeNewRound();
@@ -177,6 +178,7 @@ Would you like to play another round?");
                 btn.Enabled = true;
                 btn.Text = string.Empty;
             }
+
             player1ScoreLabel.Font = new Font(player1ScoreLabel.Font, FontStyle.Bold);
             player2ScoreLabel.Font = new Font(player2ScoreLabel.Font, FontStyle.Regular);
         }
@@ -194,6 +196,5 @@ Would you like to play another round?");
 
             m_GameLogic.SetCell(row + 1, col + 1, m_GameLogic.CurrPlayer.CellValue);
         }
-
     }
 }

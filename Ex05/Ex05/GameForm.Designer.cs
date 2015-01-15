@@ -1,6 +1,6 @@
 ﻿namespace Ex05
 {
-    partial class GameForm
+    public partial class GameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -70,6 +71,5 @@
 
         private System.Windows.Forms.Label player1ScoreLabel;
         private System.Windows.Forms.Label player2ScoreLabel;
-
     }
 }

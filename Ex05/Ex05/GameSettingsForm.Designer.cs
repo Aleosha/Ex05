@@ -1,6 +1,6 @@
 ﻿namespace Ex05
 {
-    partial class GameSettingsForm
+    public partial class GameSettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -212,4 +213,3 @@
         private System.Windows.Forms.NumericUpDown colsNumericUpDownBox;
     }
 }
-

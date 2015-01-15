@@ -12,7 +12,9 @@ namespace Ex2
         private eGameTerminationStatus m_GameTerminationStatus;
 
         public event EventHandler ComputerPlayerTurn;
+        
         public event EventHandler<CellChangeArgs> CellChange;
+        
         public event EventHandler PlayerAlternation;
 
         public eGameTerminationStatus GameTerminationStatus
@@ -67,7 +69,6 @@ namespace Ex2
 
             return setSuccessful;
         }
-
 
         public void MakeNewRound()
         {

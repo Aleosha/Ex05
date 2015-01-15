@@ -16,7 +16,6 @@ namespace Ex05
             InitializeComponent();
         }
 
-
         private void player2CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox player2HumanCheckBox = (CheckBox)sender;
